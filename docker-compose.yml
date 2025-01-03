@@ -1,0 +1,10 @@
+services:
+  db:
+    image: mysql:latest
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - ./db/mysql:/var/lib/mysql
