@@ -1,7 +1,6 @@
 services:
   mysql:
     image: mysql:latest
-    container_name: mysql
     ports:
       - "3306:3306"
     environment:
@@ -15,7 +14,7 @@ services:
       - "6379:6379"
     command: redis-server --save 20 1 --loglevel warning
     volumes:
-      - ./db/cache:/data
+      - ./db/redis:/data
   minio:
     image: minio/minio:latest
     volumes:
