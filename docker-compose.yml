@@ -6,7 +6,7 @@ services:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     volumes:
-      - ./db/mysql:/var/lib/mysql
+      - ./data/mysql:/var/lib/mysql
   redis:
     image: redis:latest
     restart: always
@@ -14,11 +14,11 @@ services:
       - "6379:6379"
     command: redis-server --save 20 1 --loglevel warning
     volumes:
-      - ./db/redis:/data
+      - ./data/redis:/data
   minio:
     image: minio/minio:latest
     volumes:
-      - ./db/minio:/data
+      - ./data/minio:/data
     ports:
       - "9000:9000"
       - "9001:9001"
@@ -35,4 +35,4 @@ services:
     environment:
       - MH_STORAGE=maildir
     volumes:
-      - ./db/maildir:/maildir
+      - ./data/maildir:/maildir
