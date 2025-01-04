@@ -45,8 +45,8 @@ services:
       - MEILI_NO_ANALYTICS=true
       - MEILI_ENV=development
       - MEILI_LOG_LEVEL
-      - MEILI_DB_PATH=/meilisearch
+      - MEILI_DB_PATH=/data.ms
     ports:
       - 7700:7700
     volumes:
-      - ./data/meilisearch:/meilisearch
+      - ./data/meilisearch:/data.ms
