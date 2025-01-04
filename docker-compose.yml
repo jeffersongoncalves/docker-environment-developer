@@ -12,6 +12,8 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     volumes:
       - ./db/mysql:/var/lib/mysql
+    networks:
+      - app-tier
   redis:
     image: redis
     restart: always
@@ -20,3 +22,5 @@ services:
     command: redis-server --save 20 1 --loglevel warning
     volumes:
       - ./db/cache:/data
+    networks:
+      - app-tier
