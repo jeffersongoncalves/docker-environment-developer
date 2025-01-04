@@ -9,7 +9,7 @@ services:
     volumes:
       - ./db/mysql:/var/lib/mysql
   redis:
-    image: redis
+    image: redis:latest
     restart: always
     ports:
       - "6379:6379"
@@ -17,7 +17,7 @@ services:
     volumes:
       - ./db/cache:/data
   minio:
-    image: minio/minio
+    image: minio/minio:latest
     volumes:
       - ./db/minio:/data
     ports:
