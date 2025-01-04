@@ -1,3 +1,7 @@
+networks:
+  app-tier:
+    driver: bridge
+
 services:
   mysql:
     image: mysql:latest
