@@ -6,3 +6,4 @@
 - Redis
 - Minio
 - Mailhog
+- Meilisearch
