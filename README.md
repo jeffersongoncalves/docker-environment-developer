@@ -7,6 +7,7 @@
 - Minio
 - Mailhog
 - Meilisearch
+- Soketi
 
 ## Docker compose
 
