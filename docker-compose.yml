@@ -36,3 +36,17 @@ services:
       - MH_STORAGE=maildir
     volumes:
       - ./data/maildir:/maildir
+  meilisearch:
+    image: getmeili/meilisearch:latest
+    environment:
+      - http_proxy
+      - https_proxy
+      - MEILI_MASTER_KEY=masterKey
+      - MEILI_NO_ANALYTICS=true
+      - MEILI_ENV=development
+      - MEILI_LOG_LEVEL
+      - MEILI_DB_PATH=/meilisearch
+    ports:
+      - 7700:7700
+    volumes:
+      - ./data/meilisearch:/meilisearch
