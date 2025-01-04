@@ -16,33 +16,14 @@ services:
     command: redis-server --save 20 1 --loglevel warning
     volumes:
       - ./db/cache:/data
-  minio-0:
-    image: bitnami/minio:latest
+  minio:
+    image: minio/minio
     volumes:
-      - ./db/minio_0_data_0:/bitnami/minio/data-0
-      - ./db/minio_0_data_1:/bitnami/minio/data-1
+      - ./db/minio:/data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
     environment:
       - MINIO_ROOT_USER=minio
       - MINIO_ROOT_PASSWORD=miniosecret
-      - MINIO_DISTRIBUTED_MODE_ENABLED=yes
-      - MINIO_DISTRIBUTED_NODES=minio-{0...1}/bitnami/minio/data-{0...1}
-  minio-1:
-    image: bitnami/minio:latest
-    volumes:
-      - ./db/minio_1_data_0:/bitnami/minio/data-0
-      - ./db/minio_1_data_1:/bitnami/minio/data-1
-    environment:
-      - MINIO_ROOT_USER=minio
-      - MINIO_ROOT_PASSWORD=miniosecret
-      - MINIO_DISTRIBUTED_MODE_ENABLED=yes
-      - MINIO_DISTRIBUTED_NODES=minio-{0...1}/bitnami/minio/data-{0...1}
-
-volumes:
-  minio_0_data_0:
-    driver: local
-  minio_0_data_1:
-    driver: local
-  minio_1_data_0:
-    driver: local
-  minio_1_data_1:
-    driver: local
+    command: server --console-address ":9001" /data
