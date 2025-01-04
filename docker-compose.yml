@@ -27,3 +27,13 @@ services:
       - MINIO_ROOT_USER=minio
       - MINIO_ROOT_PASSWORD=miniosecret
     command: server --console-address ":9001" /data
+  mailhog:
+    image: mailhog/mailhog:latest
+    restart: always
+    ports:
+      - 1025:1025
+      - 8025:8025
+    environment:
+      - MH_STORAGE=maildir
+    volumes:
+      - ./db/maildir:/maildir
