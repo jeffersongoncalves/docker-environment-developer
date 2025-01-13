@@ -13,10 +13,10 @@
 
 Start all services
 ```bash
-docker-compose up -d
+make up
 ```
 
 Stop all services
 ```bash
-docker-compose down
+make down
 ```
